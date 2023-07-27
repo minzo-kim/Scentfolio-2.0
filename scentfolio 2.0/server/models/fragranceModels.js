@@ -1,6 +1,6 @@
 const { Pool } = require('pg');
-const PG_URI =
-    'postgres://ipnkdwia:STvLwhIAdKa6_raqF8XDuSOWGVr0SvgR@stampy.db.elephantsql.com/ipnkdwia';
+// require('dotenv').config();
+const PG_URI = process.env.POSTGRES_KEY;
 
 const pool = new Pool({
     connectionString: PG_URI,
@@ -9,6 +9,6 @@ const pool = new Pool({
 module.exports = {
     query: (text, params, callback) => {
         console.log('executed query to DB', text);
-        return pool.query(text, params, callbck);
+        return pool.query(text, params, callback);
     },
 };
